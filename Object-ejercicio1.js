@@ -34,3 +34,4 @@ console.log("Cargo:", empleado.cargo);
 console.log("Salario:", empleado.salarioMensual); 
 console.log("Salario Anual: $", salarioAnual)
 console.log("Correo Electronico:", empleado.email);
+
