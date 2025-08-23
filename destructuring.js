@@ -4,13 +4,10 @@
 // ========================================================================
 
 console.log(" DESTRUCTURING EN JAVASCRIPT MODERNO - ES6+");
-console.log("=" .repeat(60));
+console.log("=".repeat(60));
 
-// ========================================================================
 // 1. DATOS DE EJEMPLO - EMPRESA TECHSOLUTIONS
-// ========================================================================
-
-const empresa = {
+const empresa = { //-->Objeto Principal 
     nombre: "TechSolutions El Salvador",
     fundacion: 2018,
     ubicacion: {
@@ -22,18 +19,20 @@ const empresa = {
             colonia: "Escalón"
         }
     },
-    empleados: [
-        {
-            id: "EMP001",
+    empleados: [ // --> Esto es una propiedad que contiene un array
+        {//--> pero contiene objetos dentro de esté
+           id: "EMP001",
             nombre: "María Elena Rodríguez",
             puesto: "Desarrolladora Senior",
             departamento: "Desarrollo",
             salario: 1800,
             tecnologias: ["JavaScript", "React", "Node.js", "PostgreSQL"],
-            contacto: {
+            
+            contacto: { //Objeto anidado
                 email: "maria.rodriguez@techsolutions.com",
                 telefono: "+503 7890-1234",
-                emergencia: {
+                
+                emergencia: { //objeto anidad 
                     nombre: "Carlos Rodríguez",
                     relacion: "Esposo",
                     telefono: "+503 7890-5678"
@@ -89,29 +88,26 @@ const empresa = {
     }
 };
 
-// ========================================================================
 // 2. DESTRUCTURING BÁSICO - EXTRAER PROPIEDADES SIMPLES
-// ========================================================================
 
 console.log("\n 1. DESTRUCTURING BÁSICO");
 console.log("-".repeat(40));
 
-// Forma tradicional (ES5)
+// Forma tradicional (ES5) --- > Es como lo hemos trabajado
 const nombreEmpresaTradicional = empresa.nombre;
 const fundacionTradicional = empresa.fundacion;
 
 console.log(" Forma tradicional (ES5):");
 console.log(`Empresa: ${nombreEmpresaTradicional}, Fundada en: ${fundacionTradicional}`);
 
-// Forma moderna con destructuring (ES6+)
+// Forma moderna con destructuring (ES6+) --- > como lo vamos hacer ahora 
+//Una forma más elegante de extraer propiedades de un objeto. 
 const { nombre, fundacion } = empresa;
 
 console.log("\n Forma moderna con destructuring (ES6+):");
 console.log(`Empresa: ${nombre}, Fundada en: ${fundacion}`);
 
-// ========================================================================
 // 3. DESTRUCTURING CON RENOMBRADO DE VARIABLES
-// ========================================================================
 
 console.log("\n 2. DESTRUCTURING CON RENOMBRADO");
 console.log("-".repeat(40));
@@ -123,30 +119,25 @@ console.log(" Variables renombradas:");
 console.log(`Compañía: ${nombreCompania}`);
 console.log(`Año de fundación: ${añoFundacion}`);
 
-// ========================================================================
 // 4. DESTRUCTURING ANIDADO - OBJETOS DENTRO DE OBJETOS
-// ========================================================================
-
 console.log("\n 3. DESTRUCTURING ANIDADO");
 console.log("-".repeat(40));
 
 // Extraer propiedades anidadas
-const { 
-    ubicacion: { 
-        pais, 
+const {
+    ubicacion: {
+        pais,
         ciudad,
         direccion: { avenida, numero, colonia }
-    } 
+    }
 } = empresa;
 
 console.log(" Información de ubicación extraída:");
 console.log(`País: ${pais}`);
 console.log(`Ciudad: ${ciudad}`);
-console.log(`Dirección completa: ${avenida} #${numero}, Col. ${colonia}`);
+console.log(`Dirección completa: ${avenida} # ${numero}, Col. ${colonia}`);
 
-// ========================================================================
 // 5. DESTRUCTURING CON VALORES POR DEFECTO
-// ========================================================================
 
 console.log("\n 4. DESTRUCTURING CON VALORES POR DEFECTO");
 console.log("-".repeat(40));
@@ -154,88 +145,61 @@ console.log("-".repeat(40));
 // Si una propiedad no existe, usar valor por defecto
 const { nombre: empresaNombre, sitioWeb = "https://techsolutions.com.sv", empleadosTotal = 0 } = empresa;
 
-console.log("🔧 Usando valores por defecto:");
+console.log("\n Usando valores por defecto:");
 console.log(`Empresa: ${empresaNombre}`);
 console.log(`Sitio web: ${sitioWeb} (valor por defecto)`);
 console.log(`Total empleados: ${empleadosTotal} (valor por defecto)`);
 
-// ========================================================================
-// 6. DESTRUCTURING DE ARRAYS
-// ========================================================================
-
-console.log("\n 5. DESTRUCTURING DE ARRAYS");
-console.log("-".repeat(40));
-
-// Extraer elementos específicos del array de empleados
-const [primerEmpleado, segundoEmpleado, tercerEmpleado] = empresa.empleados;
-
-console.log(" Primeros tres empleados:");
-console.log(`1. ${primerEmpleado.nombre} - ${primerEmpleado.puesto}`);
-console.log(`2. ${segundoEmpleado.nombre} - ${segundoEmpleado.puesto}`);
-console.log(`3. ${tercerEmpleado.nombre} - ${tercerEmpleado.puesto}`);
-
-// Saltar elementos en el array
-const [, , empleadoTercero] = empresa.empleados;
-console.log(`\n Saltando a la tercera posición: ${empleadoTercero.nombre}`);
-
-// ========================================================================
-// 7. DESTRUCTURING EN PARÁMETROS DE FUNCIÓN
-// ========================================================================
-
-console.log("\n 6. DESTRUCTURING EN FUNCIONES");
-console.log("-".repeat(40));
-
-// Función tradicional
-function mostrarEmpleadoTradicional(empleado) {
-    console.log(`Empleado: ${empleado.nombre}`);
-    console.log(`Puesto: ${empleado.puesto}`);
-    console.log(`Salario: $${empleado.salario}`);
-}
-
-// Función con destructuring en parámetros (ES6+)
-function mostrarEmpleado({ nombre, puesto, salario, departamento }) {
-    console.log(`👤 ${nombre}`);
-    console.log(`💼 Puesto: ${puesto}`);
-    console.log(`🏢 Departamento: ${departamento}`);
-    console.log(`💰 Salario: $${salario}`);
-}
-
-console.log("🚀 Usando destructuring en función:");
-mostrarEmpleado(empresa.empleados[0]);
-
-// ========================================================================
-// 8. DESTRUCTURING AVANZADO - COMBINANDO OBJETOS Y ARRAYS
-// ========================================================================
-
-console.log("\n📋 7. DESTRUCTURING AVANZADO");
+// 6. DESTRUCTURING AVANZADO - COMBINANDO OBJETOS Y ARRAY
+console.log("\n 6. DESTRUCTURING AVANZADO");
 console.log("-".repeat(40));
 
 // Extraer información compleja de un empleado
 const [{
     nombre: nombreDev,
-    contacto: { 
+    contacto: {
         email,
         emergencia: { nombre: contactoEmergencia, relacion }
     },
     tecnologias: [tech1, tech2, ...otherTechs]
 }] = empresa.empleados;
 
-console.log(" Destructuring avanzado del primer empleado:");
+console.log("\n Destructuring avanzado del primer empleado:");
 console.log(`Nombre: ${nombreDev}`);
 console.log(`Email: ${email}`);
 console.log(`Contacto emergencia: ${contactoEmergencia} (${relacion})`);
 console.log(`Tecnología principal: ${tech1}`);
 console.log(`Segunda tecnología: ${tech2}`);
-console.log(`Otras tecnologías: ${otherTechs.join(", ")}`);
+console.log(`Otras tecnologías: ${otherTechs.join(", ")}`); 
+//El método .join() convierte un array en un string, 
+// uniendo todos los elementos con el separador que le especifiques.
 
-// ========================================================================
-// 9. REST OPERATOR (...) EN DESTRUCTURING
-// ========================================================================
+//Llememos al empleado 2 
+const [, { //---> Saltamos una posicion del array 
+    nombre: nombreDesigner,//--> renombramos variables y xq si no lo hacemos nos daria error ya estatrias redeclarando una variable 
+    contacto: {
+        email: emailDesigner,
+        emergencia: { nombre: contactoEmergenciaDesigner, relacion: relacionDesigner }
+    },
+    tecnologias: [tech1Designer, tech2Designer, ...otherTechsDesigner]
+}] = empresa.empleados;
 
-console.log("\n 8. REST OPERATOR EN DESTRUCTURING");
+console.log(" \n Destructuring avanzado del segundo empleado:");
+console.log(`Nombre: ${nombreDesigner}`);
+console.log(`Email: ${emailDesigner}`);
+console.log(`Contacto emergencia: ${contactoEmergenciaDesigner} (${relacionDesigner})`);
+console.log(`Tecnología principal: ${tech1Designer}`);
+console.log(`Segunda tecnología: ${tech2Designer}`);
+console.log(`Otras tecnologías: ${otherTechsDesigner.join(", ")}`); 
+//El método .join() convierte un array en un string, 
+// uniendo todos los elementos con el separador que le especifiques.
+
+// 7. REST OPERATOR (...) EN DESTRUCTURING
+console.log("\n 7. REST OPERATOR EN DESTRUCTURING");
 console.log("-".repeat(40));
 
 // Extraer algunas propiedades y agrupar el resto
+//Dame todo lo que no sea proyectos ni empleados 
 const { proyectos, empleados, ...infoBasica } = empresa;
 
 console.log(" Información básica de la empresa:");
@@ -244,22 +208,3 @@ console.log(infoBasica);
 console.log("\n Información de proyectos:");
 console.log(`Proyectos activos: ${proyectos.activos}`);
 console.log(`Proyectos completados: ${proyectos.completados}`);
-
-// ========================================================================
-// 10. DESTRUCTURING DINÁMICO CON PROPIEDADES COMPUTADAS
-// ========================================================================
-
-console.log("\n 9. DESTRUCTURING DINÁMICO");
-console.log("-".repeat(40));
-
-function obtenerPropiedadEmpleado(empleado, propiedad) {
-    const { [propiedad]: valor } = empleado;
-    return valor;
-}
-
-const empleadoEjemplo = empresa.empleados[1];
-console.log(" Acceso dinámico a propiedades:");
-console.log(`Nombre: ${obtenerPropiedadEmpleado(empleadoEjemplo, 'nombre')}`);
-console.log(`Puesto: ${obtenerPropiedadEmpleado(empleadoEjemplo, 'puesto')}`);
-console.log(`Salario: $${obtenerPropiedadEmpleado(empleadoEjemplo, 'salario')}`);
-
