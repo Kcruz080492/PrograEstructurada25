@@ -19,43 +19,37 @@ const alumno = {
     carnet: "M20220056", 
     nombre: "Karla Cecilia Cruz", 
     carrera: "Maestria en Docencia", 
-    ingreso: 2025,
+    ingreso: 2019,
     estado: "Activo"
 }
  //Estraer el nommbre y carrera en variables separadas
  const nombreAlumno = alumno.nombre;
- const carreraEstudiante= alumno.carreraEstudiante;
+ const carreraEstudiante= alumno.carrera;
 
  console.log("=== Datos extraidos ===");
  console.log("Nombre del Estudiante:", nombreAlumno);
- console.log("Carrera de estudio:", carreraEstudiante);
+ console.log("Carrera de estudio:", alumno.carrera);
  
 // 3. Calcular años transcurridos
 const añoActual = new Date().getFullYear();
-const añosTranscurridos = añoActual - estudiante.añoIngreso;
+const añosTranscurridos = añoActual - alumno.ingreso;
 
 console.log("\n=== CÁLCULO DE AÑOS ===");
 console.log("Año actual:", añoActual);
-console.log("Año de ingreso:", estudiante.añoIngreso);
-console.log("Años transcurridos:", añosTranscurridos);
+console.log("Año de ingreso:", alumno.ingreso);
+console.log("Años transcurridos:", añosTranscurridos + " años");
 
 // 4. Agregar propiedad años transcurridos
-estudiante.añosTranscurridos = añosTranscurridos;
+alumno.añosTranscurridos = añosTranscurridos;
 
 // 5. Actualizar estado académico si han transcurrido más de 4 años
-if (añosTranscurridos > 4) {
-    estudiante.estadoAcademico = "Próximo a graduarse";
-    console.log("\n=== ACTUALIZACIÓN DE ESTADO ===");
-    console.log("Estado actualizado:", estudiante.estadoAcademico);
-}
+alumno.estado=(alumno.añosTranscurridos > 5) ? "Egresado" : "Activo"
 
 // 6. Mostrar información completa
 console.log("\n=== INFORMACIÓN COMPLETA DEL ESTUDIANTE ===");
-console.log("Carnet:", estudiante.carnet);
-console.log("Nombre:", estudiante.nombre);
-console.log("Carrera:", estudiante.carrera);
-console.log("Año de ingreso:", estudiante.añoIngreso);
-console.log("Años transcurridos:", estudiante.añosTranscurridos);
-console.log("Estado académico:", estudiante.estadoAcademico);
-
-
+console.log("Carnet:", alumno.carnet);
+console.log("Nombre:", alumno.nombre);
+console.log("Carrera:", alumno.carrera);
+console.log("Año de ingreso:", alumno.ingreso);
+console.log("Años transcurridos:", alumno.añosTranscurridos + " años");
+console.log("Estado académico:", alumno.estado);
